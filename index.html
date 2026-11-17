@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="owa, hice esta cosa para convertir imagenes en paquetitos de stickers para WhatsApp."
+  >
+
+  <title>Paow's StickerPack Lab ★</title>
+
+  <!-- FUENTE PIXEL ART -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSZIP -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
+    defer
+  ></script>
+
+  <!-- NUESTRO JAVASCRIPT -->
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+
+    <div class="logo">
+      ★ PAOW'S STICKERPACK LAB
+    </div>
+
+    <span class="version">
+      VERSION 1.2
+    </span>
+
+  </header>
+
+  <main class="contenedor">
+
+    <!-- BIENVENIDA -->
+    <section class="bienvenida">
+
+      <div class="etiqueta">
+        [ oa, bienvenido al coso este ]
+      </div>
+
+      <h1>
+        owa, quieres hacer stickers?
+      </h1>
+
+      <p>
+        pues hice esta cosa para convertir imagenes
+        en paquetitos de stickers para whatsapp,
+        no se que mas decirte JSKDJ.
+      </p>
+
+      <p>
+        ah, y si quieres stickers sin fondo,
+        usa imagenes que ya tengan transparencia, osea WEBP o algo asi, o PNG
+        esto no quita fondos ni hace milagros.
+      </p>
+
+    </section>
+
+    <!-- VENTANA PRINCIPAL -->
+    <section class="ventana">
+
+      <div class="barra-ventana">
+
+        <span>
+          ★ EL GENERADOR ESE
+        </span>
+
+        <span aria-hidden="true">
+          □ ×
+        </span>
+
+      </div>
+
+      <div class="contenido-ventana">
+
+        <!-- NOMBRE DEL PAQUETE -->
+        <div class="campo">
+
+          <label for="nombre">
+            como se va a llamar tu paquetito?
+          </label>
+
+          <input
+            type="text"
+            id="nombre"
+            placeholder="ponle un nombre aca"
+            maxlength="50"
+          >
+
+        </div>
+
+        <!-- AUTOR -->
+        <div class="campo">
+
+          <label for="autor">
+            y quien hizo estas cosas?
+          </label>
+
+          <input
+            type="text"
+            id="autor"
+            placeholder="tu nombre o lo que quieras"
+            maxlength="50"
+          >
+
+        </div>
+
+        <!-- SUBIR IMAGENES -->
+        <div
+          class="zona-subida"
+          id="zonaSubida"
+        >
+
+          <div class="icono-subida" aria-hidden="true">
+            ▧
+          </div>
+
+          <h2>
+            pon tus imagenes aca
+          </h2>
+
+          <p>
+            puedes arrastrarlas o darle
+            al boton ese de abajo
+          </p>
+
+          <p>
+            PNG / JPG / WEBP
+          </p>
+
+          <label
+            for="imagenes"
+            class="boton-subir"
+          >
+            + ELEGIR IMAGENES
+          </label>
+
+          <input
+            type="file"
+            id="imagenes"
+            accept="image/png,image/jpeg,image/webp"
+            multiple
+            hidden
+          >
+
+          <small>
+            minimo 3, maximo 30, tampoco abuses JSJS
+          </small>
+
+        </div>
+
+        <!-- PREVISUALIZACION -->
+        <div class="seccion-preview">
+
+          <div class="titulo-preview">
+
+            <h2>
+              tus imagenes
+            </h2>
+
+            <span id="contador">
+              0 / 30
+            </span>
+
+          </div>
+
+          <div
+            class="grid-stickers"
+            id="preview"
+          >
+
+            <p class="mensaje-vacio">
+              aca no hay nada todavia
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- BARRA DE PROGRESO -->
+        <div
+          class="progreso-contenedor"
+          id="progresoContenedor"
+          hidden
+        >
+
+          <div
+            class="progreso-barra"
+            id="progresoBarra"
+            role="progressbar"
+            aria-label="Progreso de conversion"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          ></div>
+
+        </div>
+
+        <!-- GENERAR PAQUETE -->
+        <button
+          id="generar"
+          class="boton-generar"
+          type="button"
+          disabled
+        >
+          HACER MI PAQUETITO ↓
+        </button>
+
+        <!-- ESTADO DEL GENERADOR -->
+        <p
+          id="estado"
+          class="estado"
+          role="status"
+          aria-live="polite"
+        >
+          pon al menos 3 imagenes, owa
+        </p>
+
+        <!-- AVISO DE APLICACIONES -->
+        <section class="aviso-app">
+
+          <h3>
+            ★ otra cosita chiquitilla antes de irt, quiza debi empezar por aka
+          </h3>
+
+          <p>
+            mimimi, para usar el archivo que acabas
+            de crear necesitas una app que acepte
+            <strong>.wastickers</strong>,
+            porque whatsapp no los abre asi noma.
+          </p>
+
+          <p>
+            si no tienes una, pues te dejo unas
+            aca abajo para que no andes buscando.
+          </p>
+
+          <p class="aviso-subtitulo">
+            elige la que corresponda a tu telefono:
+          </p>
+
+          <div class="tiendas">
+
+            <!-- ANDROID -->
+            <a
+              href="https://play.google.com/store/apps/details?id=com.marsvard.stickermakerforwhatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="boton-tienda android"
+            >
+              ▶ GOOGLE PLAY
+
+              <small>
+                ANDROID
+              </small>
+            </a>
+
+            <!-- IPHONE -->
+            <a
+              href="https://apps.apple.com/gt/app/sticker-maker-studio/id1443326857"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="boton-tienda ios"
+            >
+              ★ APP STORE
+
+              <small>
+                IPHONE
+              </small>
+            </a>
+
+          </div>
+
+  <p>
+ ah, y si al compartir el archivo
+  te aparece como .wastickers.zip,
+  prueba quitarle el .zip del final.
+  aunque la verdad, funciona de todas maneras, pero si en algun caso no te funciono a ti, o es mala suerte o yo no programo bien.
+ </p>
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- PIE DE PAGINA -->
+  <footer>
+
+    <span>
+      hecho por paow ★ 2026
+    </span>
+
+    <span>
+      no se que poner aca, oa
+    </span>
+
+  </footer>
+
+</body>
+</html>
